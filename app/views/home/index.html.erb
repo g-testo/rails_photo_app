@@ -1,17 +1,17 @@
 <img onclick="startDictation()" src="http://i.imgur.com/cHidSVu.gif" />
 
 <div id="transcript">
-  TEXT
+
 </div>
 
 <div id="textfield">
-  TEXT
+  
 </div>
 
 
-<!-- <body onload='responsiveVoice.speak("What type of Photo are you planning to take? Will it be indoors or outdoors? Will the subject be in motion or still?")'> -->
+<body onload='responsiveVoice.speak("What type of Photo are you planning to take? Will it be indoors or outdoors? Will the subject be in motion or still?")'>
 
-<body onload='responsiveVoice.speak("SPEAK?")'>
+<!-- <body onload='responsiveVoice.speak("SPEAK?")'> -->
 
 
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
@@ -20,13 +20,13 @@
 <!-- HTML5 Speech Recognition API -->
 
 <script>
-  var type = "";
+  var cat = "";
   var locale = "indoors";
   var motion = "still";
 
   function startDictation() {
 
-    console.log("type is:", type);
+    console.log("cat is:", cat);
     if (window.hasOwnProperty('webkitSpeechRecognition')) {
 
       var recognition = new webkitSpeechRecognition();
@@ -39,24 +39,24 @@
 
       recognition.onresult = function(e) {
 
-        if (type == "") {
+        if (cat == "") {
           if (e.results[0][0].confidence > 0.75) {
             if (e.results[0][0].transcript.includes("portrait")) {
               console.log("your text included portrait");
-              type = "portrait";
+              cat = "portrait";
             }
             if (e.results[0][0].transcript.includes("macro")) {
               console.log("your text included macro");
-              type = "macro";
+              cat = "macro";
             }
             if (e.results[0][0].transcript.includes("landscape")) {
               console.log("your text included landscape");
-              type = "landscape";
+              cat = "landscape";
               locale = "outdoors";
             }
             if (e.results[0][0].transcript.includes("cityscape")) {
               console.log("your text included cityscape");
-              type = "cityscape";
+              cat = "cityscape";
               locale = "outdoors";
             }
             if (e.results[0][0].transcript.includes("Outdoors")) {
@@ -70,13 +70,21 @@
           }
         }
 
-        console.log(type);
+        console.log(cat);
         console.log(locale);
         console.log(motion);
 
-        if (type != "") {
-          // fire off our route here with query strings
-          console.log("we are good to go!");
+        if (cat != "") {
+          var data = {
+            category: cat,
+            location: locale,
+            movement: motion
+          }
+          if (cat == "landscape" || cat == "cityscape" || locale == "outdoors") {
+            $.redirect("/home/maps", data);
+          } else {
+            $.redirect("/home/nomaps", data);
+          }
         } else {
           responsiveVoice.speak("Please let me know if you want to take a Portrait, Macro, Landscape or Cityscape Photo.");
         }
