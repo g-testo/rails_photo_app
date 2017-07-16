@@ -1,2 +1,191 @@
-<h1>Home#maps</h1>
-<p>Find me in app/views/home/maps.html.erb</p>
+<html>
+
+<head>
+
+  <style type="text/css">
+    html {
+      height: 100%;
+    }
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map_canvas {
+      height: 100%;
+    }
+  </style>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-          FxYoVTVq6Is6lD98&sensor=false">
+  </script>
+  <script type="text/javascript">
+    /*var locations = [
+      ["loan 1", 33.44184171, -112.07770889, "address 1"],
+      ["loan 2", 33.44175687, -112.07077733, "address 2"],
+      ["loan 3", 33.44546357, -112.07441952, "address 3"]
+      ];*/
+    var cityscape = [
+      [
+        "Cityscape 1",
+        33.44184171,
+        -112.07770889,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset"
+      ],
+      [
+        "Cityscape 2",
+        33.44175687,
+        -112.07077733,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset"
+      ],
+      [
+        "Cityscape 3",
+        33.44646357,
+        -112.07441952,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset"
+      ],
+      [
+        "Cityscape 4",
+        33.44446357,
+        -112.07641952,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset"
+      ]
+    ];
+    var landscape = [
+      [
+        "Landscape 1",
+        33.43880865,
+        -112.0705683,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
+        [
+          "https://image.flaticon.com/icons/png/128/167/167707.png",
+          "https://image.flaticon.com/icons/png/128/119/119591.png",
+          "https://image.flaticon.com/icons/png/128/119/119596.png",
+          "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/car-128.png"
+        ]
+      ],
+      [
+        "Landscape 2",
+        33.44305384,
+        -112.06404288,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
+        [
+          "https://image.flaticon.com/icons/png/128/167/167707.png",
+          "https://image.flaticon.com/icons/png/128/119/119591.png",
+          "https://image.flaticon.com/icons/png/128/119/119596.png",
+          "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/car-128.png"
+        ]
+      ],
+      [
+        "Landscape 3",
+        33.44546357,
+        -112.07067418,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
+        [
+          "https://image.flaticon.com/icons/png/128/167/167707.png",
+          "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/car-128.png",
+          "https://image.flaticon.com/icons/png/128/119/119591.png",
+          "https://image.flaticon.com/icons/png/128/119/119596.png"
+        ]
+      ],
+      [
+        "Landscape 3",
+        33.44246357,
+        -112.07667418,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
+        [
+          "https://image.flaticon.com/icons/png/128/167/167707.png",
+          "https://image.flaticon.com/icons/png/128/119/119591.png",
+          "https://image.flaticon.com/icons/png/128/119/119596.png"
+        ]
+      ],
+      [
+        "Landscape 3",
+        33.44446357,
+        -112.07567418,
+        "Lorem ipsum dolor sit amet, est no reque paulo epicuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
+        [
+          "https://image.flaticon.com/icons/png/128/167/167707.png",
+          "https://image.flaticon.com/icons/png/128/119/119591.png",
+          "https://image.flaticon.com/icons/png/128/119/119596.png"
+        ]
+      ]
+    ];
+    var locations = [cityscape, landscape];
+    function initialize() {
+      var myOptions = {
+        center: new google.maps.LatLng(33.44184171, 151.274856),
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      var map = new google.maps.Map(document.getElementById("default"), myOptions);
+      setMarkers(map, locations[1]);
+    }
+    function setMarkers(map, locations) {
+      var marker, i;
+      for (i = 0; i < locations.length; i++) {
+        var title = locations[i][0];
+        var lat = locations[i][1];
+        var long = locations[i][2];
+        var desc = locations[i][3];
+        var latlngset = new google.maps.LatLng(lat, long);
+        var marker = new google.maps.Marker({
+          map: map,
+          title: title,
+          position: latlngset,
+          clicked: false
+        });
+        map.setCenter(marker.getPosition());
+        /////////////////////////////////////////
+        var content = "<style>.title {font-weight:bold;font-size:20px;}</style>";
+        for (var j = 0; j < locations[i][4].length; j++)
+          content += '<img src="' + locations[i][4][j] + '">';
+        content +=
+          '<br><div class = "title">' +
+          title +
+          "</div>" +
+          desc +
+          "<br><a href=#>How to shoot this location</a>";
+        /////////////////////////////////////////
+        var infowindow = new google.maps.InfoWindow();
+        google.maps.event.addListener(
+          marker,
+          "click",
+          (function(marker, content, infowindow) {
+            return function() {
+              setTimeout(function() {
+                infowindow.setContent(content);
+              }, 200);
+              infowindow.open(map, marker);
+              google.maps.event.addListener(
+                map,
+                "click",
+                (function(marker) {
+                  return function() {
+                    infowindow.close();
+                  };
+                })(marker)
+              );
+            };
+          })(marker, content, infowindow)
+        );
+      }
+    }
+  </script>
+</head>
+
+<body onload="initialize()">
+  <div id="default" style="width:100%; height:100%"></div>
+</body>
+
+</html>
+
+} }
+
+
+</script>
+</head>
+
+<body onload="initialize()">
+  <div id="default" style="width:100%; height:100%"></div>
+</body>
+
+</html>

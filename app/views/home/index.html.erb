@@ -1,12 +1,31 @@
-<img onclick="startDictation()" src="http://i.imgur.com/cHidSVu.gif" />
+<!-- <img onclick="startDictation()" src="http://i.imgur.com/cHidSVu.gif" /> -->
 
-<div id="transcript">
+<!-- <div id="transcript">
   TEXT
 </div>
 
 <div id="textfield">
   TEXT
-</div>
+</div> -->
+
+
+<div class="main-container">
+   <div class="mic-container">
+   <div class="soundwavesSVG2">
+     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path class="first-wave" d="M29.744,32.969l-6.098,6.1c6.027,6.03,6.027,15.835,0,21.863l0,0l6.098,6.101c0-0.001,0-0.001,0-0.001   C39.135,57.642,39.135,42.36,29.744,32.969z"/><path class="second-wave" d="M43.729,18.984l-6.102,6.1c13.738,13.737,13.738,36.095,0,49.832l0,0l6.102,6.1c0,0,0,0,0-0.001   C60.828,63.913,60.828,36.087,43.729,18.984z"/><path class="third-wave" d="M76.354,50c0-16.998-6.623-32.981-18.641-45l0,0l-6.104,6.1C62,21.492,67.723,35.304,67.723,50S62,78.508,51.609,88.899   V88.9l6.104,6.1c0-0.001,0-0.001,0-0.001C69.73,82.982,76.354,66.998,76.354,50z"/></g></svg>
+   </div>
+   <div onclick="startDictation()" class="active-mic">
+   </div>
+   <div class="soundwavesSVG1">
+     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path class="first-wave" d="M29.744,32.969l-6.098,6.1c6.027,6.03,6.027,15.835,0,21.863l0,0l6.098,6.101c0-0.001,0-0.001,0-0.001   C39.135,57.642,39.135,42.36,29.744,32.969z"/><path class="second-wave" d="M43.729,18.984l-6.102,6.1c13.738,13.737,13.738,36.095,0,49.832l0,0l6.102,6.1c0,0,0,0,0-0.001   C60.828,63.913,60.828,36.087,43.729,18.984z"/><path class="third-wave" d="M76.354,50c0-16.998-6.623-32.981-18.641-45l0,0l-6.104,6.1C62,21.492,67.723,35.304,67.723,50S62,78.508,51.609,88.899   V88.9l6.104,6.1c0-0.001,0-0.001,0-0.001C69.73,82.982,76.354,66.998,76.354,50z"/></g></svg>
+   </div>
+   </div>
+   <div class="div1"></div>
+   <div class="div2"></div>
+ </div>
+
+
+
 
 
 <!-- <body onload='responsiveVoice.speak("What type of Photo are you planning to take? Will it be indoors or outdoors? Will the subject be in motion or still?")'> -->
@@ -83,13 +102,13 @@
 
         console.log(e.results[0][0].transcript);
         console.log(typeof(e.results[0][0].transcript));
-        document.getElementById('transcript').innerHTML
-                                 = e.results[0][0].transcript;
+        // document.getElementById('transcript').innerHTML
+        //                          = e.results[0][0].transcript;
 
         recognition.stop();
 
-        document.getElementById('textfield').innerHTML
-                                 = e.results[0][0].confidence;
+        // document.getElementById('textfield').innerHTML
+        //                          = e.results[0][0].confidence;
 
       };
 
