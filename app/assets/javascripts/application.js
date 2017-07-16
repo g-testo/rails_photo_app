@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery.redirect.js
+//= require volume-meter.js
