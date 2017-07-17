@@ -21,8 +21,8 @@
 
 <script>
   $(function() {
-    // responsiveVoice.speak("What type of Photo are you planning to take? Will it be indoors or outdoors? Will the subject be in motion or still?")
-    responsiveVoice.speak("Recording!")
+    responsiveVoice.speak("What type of Photo are you planning to take? Will it be indoors or outdoors? Will the subject be in motion or still?")
+    // responsiveVoice.speak("Recording!")
   });
 
   var cat = "";
@@ -42,38 +42,57 @@
       volumeLevel()
       recognition.onresult = function(e) {
 
-
-
         if (cat == "") {
           if (e.results[0][0].confidence > 0.75) {
-            if (e.results[0][0].transcript.includes("portrait")) {
-              cat = "portrait";
+
+            var categoryList = ["portrait", "macro", "landscape", "cityscape"];
+            var voiceResults = e.results[0][0].transcript;
+
+            for(var i = 0; i < categoryList.length; i++){
+              if (voiceResults.includes(categoryList[i])) {
+                cat = categoryList[i];
+              }
             }
-            if (e.results[0][0].transcript.includes("macro")) {
-              cat = "macro";
+            //"Outdoors" requires uppercase "O" to be read correctly
+            if(voiceResults.includes("Outdoors")){
+             locale = "outdoors";
             }
-            if (e.results[0][0].transcript.includes("landscape")) {
-              cat = "landscape";
-              locale = "outdoors";
+
+            if(voiceResults.includes("motion")){
+              var motion = "motion";
             }
-            if (e.results[0][0].transcript.includes("cityscape")) {
-              cat = "cityscape";
-              locale = "outdoors";
-            }
-            if (e.results[0][0].transcript.includes("outdoors")) {
-              locale = "outdoors";
-            }
-            if (e.results[0][0].transcript.includes("motion")) {
-              motion = "motion";
-            }
+
+            // if (e.results[0][0].transcript.includes("portrait")) {
+            //   console.log("your text included portrait");
+            //   cat = "portrait";
+            // }
+            // if (e.results[0][0].transcript.includes("macro")) {
+            //   console.log("your text included macro");
+            //   cat = "macro";
+            // }
+            // if (e.results[0][0].transcript.includes("landscape")) {
+            //   console.log("your text included landscape");
+            //   cat = "landscape";
+            //   locale = "outdoors";
+            // }
+            // if (e.results[0][0].transcript.includes("cityscape")) {
+            //   console.log("your text included cityscape");
+            //   cat = "cityscape";
+            //   locale = "outdoors";
+            // }
+            // //"Outdoors" requires uppercase "O" to be read correctly
+            // if (e.results[0][0].transcript.includes("Outdoors")) {
+            //   locale = "outdoors";
+            // }
+            // if (e.results[0][0].transcript.includes("motion")) {
+            //   motion = "motion";
+            // }
+
           } else {
             responsiveVoice.speak("I did not catch that, please try again.");
             volumeLevelStop();
           }
         }
-
-
-
         if (cat != "") {
           var data = {
             category: cat,
@@ -81,9 +100,9 @@
             movement: motion
           }
           if (cat == "landscape" || cat == "cityscape" || locale == "outdoors") {
-            $.redirect("/home/maps?category=" + cat + "&movement=" + motion, data);
+            $.redirect("/maps?category=" + cat + "&movement=" + motion, data);
           } else {
-            $.redirect("/home/nomaps?category=" + cat + "&movement=" + motion, data);
+            $.redirect("/nomaps?category=" + cat + "&movement=" + motion, data);
           }
         } else {
           responsiveVoice.speak("Please let me know if you want to take a Portrait, Macro, Landscape or Cityscape Photo.");

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  post 'home/maps'
-  get 'home/maps'
+  post 'maps' => 'home#maps'
+  get 'maps' => 'home#maps'
 
-  post 'home/nomaps'
-  get 'home/nomaps'
+  post 'nomaps' => 'home#nomaps'
+  get 'nomaps' => 'home#nomaps'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

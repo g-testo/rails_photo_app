@@ -193,7 +193,7 @@ $(function() {
       "portrait"
     ]
   ];
-  
+
 var landscape = [];
 var cityscape = [];
 var portrait = [];
@@ -221,7 +221,6 @@ for (var i = 0; i < database.length; i ++){
     var map = new google.maps.Map(document.getElementById("default"), myOptions);
     console.log("<%= @cat %>")
     var locArrPos = locations.indexOf(<%= @cat %>);
-
     setMarkers(map, locations[locArrPos]);
 
 
