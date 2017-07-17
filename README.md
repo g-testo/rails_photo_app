@@ -1,24 +1,5 @@
-# README
+# Photo Bot 2nd Edition Ver. 2.31
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is voice controlled photography web app that utilizes the rails framework as well as Google Maps API, Web Audio API and ResponsiveVoice.JS.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Due to limitations with Web Audio API only work using Google Chrome.
