@@ -1,241 +1,233 @@
-<head>
-  <style type="text/css">
-    html {
-      height: 100%;
-    }
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    #map_canvas {
-      height: 100%;
-    }
-  </style>
-  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB1tbIAqN0XqcgTR1-FxYoVTVq6Is6lD98&sensor=false">
 
-  </script>
-  <script type="text/javascript">
-    var cityscape = [
-      [
-        "Galvanize",
-        33.4404542,
-        -112.0691178,
-        "The Front Door of the Tech Industry<br>Phoenix was recently recognized as #2 metro region in the creation of software technology jobs between 2012 and 2014, and STEM job openings will increase in the US by 2.6 million through 2020.* This new initiative between Galvanize, the City of Phoenix, and Allstate will ensure that America can meet the growing demand for technical workers and is the first step toward eliminating technology’s talent gap.",
-        [
-          "http://blog.cushwake.com/wp-content/uploads/2017/05/galvanize.jpg",
-          "https://cdn.geekwire.com/wp-content/uploads/2016/08/Galvanize-630x420.jpg",
+<style type="text/css">
+  /*html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #map_canvas {
+    height: 100%;
+  }
+  .search {
+    height:150px;
+    width:150px;
+    border-radius:50%;
+    background-color:rgba(72, 112, 222, .8);
+    background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/5027-200.png');
+    background-size:80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position:relative;
+    bottom:200px;
+    left:100px;
+  }
 
-        ]
-      ],
+  .search:hover {
+    background-color:rgba(72, 112, 222, 1);
+  }*/
+</style>
+
+
+<script type="text/javascript">
+
+$(function() {
+  initialize()
+});
+
+  var cityscape = [
+    [
+      "Galvanize",
+      33.4404542,
+      -112.0691178,
+      "The Front Door of the Tech Industry<br>Phoenix was recently recognized as #2 metro region in the creation of software technology jobs between 2012 and 2014, and STEM job openings will increase in the US by 2.6 million through 2020.* This new initiative between Galvanize, the City of Phoenix, and Allstate will ensure that America can meet the growing demand for technical workers and is the first step toward eliminating technology’s talent gap.",
       [
-        "Westward Ho",
-        33.45492,
-        -112.074229,
-        "This building primarily served as a hotel from its grand opening in 1928 until its official closure on April 7, 1980.[5] The facility also housed several offices and restaurants, including one on the 16th floor called Top of the Ho. There were also several gathering rooms in the hotel, the Turquoise Room on the 2nd floor where many marriage receptions were held, and a large convention center adjacent to the main hotel which could seat 1,600 called the Thunderbird Room where many of Phoenix's big events took place.",
-        [
-          "https://www.gannett-cdn.com/-mm-/4984e39cb281bfd2d1d08a93a623f588906af0cd/c=0-221-2987-1909&r=x633&c=1200x630/local/-/media/2017/04/19/Phoenix/Phoenix/636282272562454732-Westward-Ho-6.jpg",
-          "https://s-media-cache-ak0.pinimg.com/originals/fc/b8/76/fcb8767187c7b2c94cc21ddf5e06a0ba.jpg",
-           ]
-      ],
-      [
-        "Wrigly Mansion",
-        33.5228326,
-        -112.0290145,
-        "The Wrigley Mansion in Phoenix, Arizona, is a landmark building constructed between 1929 and 1931 by chewing-gum magnate William Wrigley, Jr. It is also known as William Wrigley, Jr., Winter Cottage and as La Colina Solana.",
-        [
-          "https://image.flaticon.com/icons/png/128/167/167707.png",
-          "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/car-128.png",
-          "https://image.flaticon.com/icons/png/128/119/119591.png",
-          "https://image.flaticon.com/icons/png/128/119/119596.png"
-        ]
-      ],
-      [
-        "Phoenix Police Museum",
-        33.447409,
-        -112.075950,
-        "<b>Our Purpose:</b>To educate the public in the history of the Phoenix Police Department in historic and modern context in order to enhance the image of law enforcement; interact with our community through a positive learning environment; to promote and preserve the history of the department while building a closer relationship between our police department and our community. The Museum provides a public location for an educational museum which is free for all.",
-        [
-          "https://media-cdn.tripadvisor.com/media/photo-s/09/2f/39/22/phoenix-police-museum.jpg",
-          "https://media-cdn.tripadvisor.com/media/photo-s/03/90/66/7b/phoenix-police-museum.jpg",
-          "https://res.cloudinary.com/simpleview/image/fetch/c_fill,f_auto,q_75,w_640/https://res.cloudinary.com/simpleview/image/upload/crm/phoenix/5515_CITYHALL_b9be223b-5056-b3a8-49ebbe9d2834779d.jpg"
-        ]
-      ],
-      [
-        "Steinegger Lodging House",
-        33.450249,
-        -112.07288,
-        "Built in 1889, this two-story former hotel has gone by many names including Alamo Hotel, St. Francis Hotel and Golden West Hotel. Though the brick building may not look like much today, it originally possessed a Victorian-style façade, but the front was modified in 1935. It’s owned by CSM, the same real estate developer that is currently renovating the historic Professional Building adjacent to it. They haven’t made any official announcements as to what they’ll do with the building. ",
-        [
-          "https://d3jf2jipiivcgq.cloudfront.net/b95a9c913d812e080de66d602a1372f8a94c18d0.jpg",
-          "http://2.bp.blogspot.com/-Fm_8WKhZMEg/VT1qQpNtXrI/AAAAAAAAXnk/VvjAb8PfvL0/s1600/Golden_West_Steinegger_Lodge_Alamo_1980s.jpg",
-          "http://kjzz.org/sites/default/files/styles/news_story_210/public/field/image/Back.JPG?itok=I0MFtZ3Z"
-        ]
+        "http://blog.cushwake.com/wp-content/uploads/2017/05/galvanize.jpg",
+        "https://cdn.geekwire.com/wp-content/uploads/2016/08/Galvanize-630x420.jpg",
+
       ]
-    ];
-
-    var landscape = [
+    ],
+    [
+      "Westward Ho",
+      33.45492,
+      -112.074229,
+      "This building primarily served as a hotel from its grand opening in 1928 until its official closure on April 7, 1980.[5] The facility also housed several offices and restaurants, including one on the 16th floor called Top of the Ho. There were also several gathering rooms in the hotel, the Turquoise Room on the 2nd floor where many marriage receptions were held, and a large convention center adjacent to the main hotel which could seat 1,600 called the Thunderbird Room where many of Phoenix's big events took place.",
       [
-        "Camelback Mountain",
-        33.515452,
-        -111.962626,
-        "Camelback Mountain is regularly ranked one of the nation's top hiking destinations for avid hikers. The range consists of two main trails, Echo Canyon Trail and Cholla Trail; both of which are rated Extremely Difficult and subject hikers to steep elevation gains, very rugged terrain, and the harsh elements associated with the Sonoran Desert.",
-        [
-          "http://www.phoenixasap.com/gfx/hiking-camelback-mountain.jpg",
-          "https://www.omnihotels.com/-/media/images/hotels/phxrst/activities/phxrst-omni-scottsdale-camelback.jpg?h=660&la=en&w=1170",
-          "https://s3-media3.fl.yelpcdn.com/bphoto/PO9-Prb80ynURA9K287aUQ/348s.jpg"
-        ]
-      ],
+        "https://www.gannett-cdn.com/-mm-/4984e39cb281bfd2d1d08a93a623f588906af0cd/c=0-221-2987-1909&r=x633&c=1200x630/local/-/media/2017/04/19/Phoenix/Phoenix/636282272562454732-Westward-Ho-6.jpg",
+        "https://s-media-cache-ak0.pinimg.com/originals/fc/b8/76/fcb8767187c7b2c94cc21ddf5e06a0ba.jpg",
+         ]
+    ],
+    [
+      "Wrigly Mansion",
+      33.5228326,
+      -112.0290145,
+      "The Wrigley Mansion in Phoenix, Arizona, is a landmark building constructed between 1929 and 1931 by chewing-gum magnate William Wrigley, Jr. It is also known as William Wrigley, Jr., Winter Cottage and as La Colina Solana.",
       [
-        "South Mountain Park",
-        33.347389,
-        -112.084865,
-        "At more than 16,000 acres South Mountain Park/Preserve actually consists of three mountain ranges, the Ma Ha Tauk, Gila and Guadalupe; and is one of the largest municipally operated parks in the country. It boasts 51 miles of primary trails for horseback riding, hiking and mountain biking for all ability levels. From the park's main entrance, you can drive up the Summit Road 5.5 miles to Dobbins Lookout and spectacular valleywide views or you can continue to the Gila Lookout for a view of the Gila River Valley. ",
-        [
-          "http://www.birderfrommaricopa.com/user/cimage/a-aasouthmtnpark-bendire-ogh-281529.JPG",
-          "https://www.phoenix.gov/parkssite/MediaAssets/070363.png",
-          "https://s3.amazonaws.com/citybuzz/2015/11/south-mountain-real-estate-phoenix-neighborhood/south-mountain-real+estate-2.jpg"
-        ]
-      ],
-      [
-        "Phoenix Botanical Garden",
-        33.463014,
-        -111.943671,
-        "For more than 70 years, the Desert Botanical Garden has been teaching and inspiring visitors from the local community and around the world, providing research, exhibits and more designed to help us understand, protect and preserve the desert’s natural beauty.",
-        [
-          "http://www.8thingstodo.com/wp-content/uploads/2012/12/desert-botanical-garden.jpg",
-          "http://img1.sunset.timeinc.net/sites/default/files/image/2012/10/west-public-gardens-desert-botanical-garden-phoenix-1012-x.jpg",
-          "http://restylesource.com/wp-content/uploads/2015/11/garden3.jpg"
-
-        ]
-      ],
-      [
-        "Phoenix Mountain Preserve",
-        33.553141,
-         -112.016897,
-        "The parks and peaks that make up the Phoenix Mountains Preserve are surrounded by civilization, but feel as remote as the Sonoran Desert outside the city. Located in the heart of Central Phoenix and just 20 minutes from downtown, the preserve offers hiking, biking, and views from prominent summits such as Piestewa Peak and Camelback Mountain. icuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
-        [
-          "https://c1.staticflickr.com/5/4125/4842841654_1826b5a344_b.jpg",
-          "https://images1.phoenixnewtimes.com/imager/u/original/6562178/instatrail.jpg",
-          "https://www.phoenix.gov/parkssite/MediaAssets/091077.jpg",
-        ]
-      ],
-      [
-        "North Mountain Park",
-        33.582136,
-        -112.066411,
-        "Around the turn of the century, the North Mountain area served as a campground for Phoenix Indian School’s pupils and their families. There are a number of closed mining shafts and pits, evidence of the history of copper mining in Arizona.",
-        [
-          "http://azfoo.net/places/az/phoenix/northmountain/misc/01_NorthMountainSign.jpg",
-          "https://www.phoenix.gov/parkssite/MediaAssets/d_031652.jpg",
-          "https://s3-media4.fl.yelpcdn.com/bphoto/jnSj98VOKLbIUaeGbXz6Mg/348s.jpg"
-        ]
+        "https://image.flaticon.com/icons/png/128/167/167707.png",
+        "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/car-128.png",
+        "https://image.flaticon.com/icons/png/128/119/119591.png",
+        "https://image.flaticon.com/icons/png/128/119/119596.png"
       ]
-    ];
+    ],
+    [
+      "Phoenix Police Museum",
+      33.447409,
+      -112.075950,
+      "<b>Our Purpose:</b>To educate the public in the history of the Phoenix Police Department in historic and modern context in order to enhance the image of law enforcement; interact with our community through a positive learning environment; to promote and preserve the history of the department while building a closer relationship between our police department and our community. The Museum provides a public location for an educational museum which is free for all.",
+      [
+        "https://media-cdn.tripadvisor.com/media/photo-s/09/2f/39/22/phoenix-police-museum.jpg",
+        "https://media-cdn.tripadvisor.com/media/photo-s/03/90/66/7b/phoenix-police-museum.jpg",
+        "https://res.cloudinary.com/simpleview/image/fetch/c_fill,f_auto,q_75,w_640/https://res.cloudinary.com/simpleview/image/upload/crm/phoenix/5515_CITYHALL_b9be223b-5056-b3a8-49ebbe9d2834779d.jpg"
+      ]
+    ],
+    [
+      "Steinegger Lodging House",
+      33.450249,
+      -112.07288,
+      "Built in 1889, this two-story former hotel has gone by many names including Alamo Hotel, St. Francis Hotel and Golden West Hotel. Though the brick building may not look like much today, it originally possessed a Victorian-style façade, but the front was modified in 1935. It’s owned by CSM, the same real estate developer that is currently renovating the historic Professional Building adjacent to it. They haven’t made any official announcements as to what they’ll do with the building. ",
+      [
+        "https://d3jf2jipiivcgq.cloudfront.net/b95a9c913d812e080de66d602a1372f8a94c18d0.jpg",
+        "http://2.bp.blogspot.com/-Fm_8WKhZMEg/VT1qQpNtXrI/AAAAAAAAXnk/VvjAb8PfvL0/s1600/Golden_West_Steinegger_Lodge_Alamo_1980s.jpg",
+        "http://kjzz.org/sites/default/files/styles/news_story_210/public/field/image/Back.JPG?itok=I0MFtZ3Z"
+      ]
+    ]
+  ];
 
-    var locations = [cityscape, landscape];
+  var landscape = [
+    [
+      "Camelback Mountain",
+      33.515452,
+      -111.962626,
+      "Camelback Mountain is regularly ranked one of the nation's top hiking destinations for avid hikers. The range consists of two main trails, Echo Canyon Trail and Cholla Trail; both of which are rated Extremely Difficult and subject hikers to steep elevation gains, very rugged terrain, and the harsh elements associated with the Sonoran Desert.",
+      [
+        "http://www.phoenixasap.com/gfx/hiking-camelback-mountain.jpg",
+        "https://www.omnihotels.com/-/media/images/hotels/phxrst/activities/phxrst-omni-scottsdale-camelback.jpg?h=660&la=en&w=1170",
+        "https://s3-media3.fl.yelpcdn.com/bphoto/PO9-Prb80ynURA9K287aUQ/348s.jpg"
+      ]
+    ],
+    [
+      "South Mountain Park",
+      33.347389,
+      -112.084865,
+      "At more than 16,000 acres South Mountain Park/Preserve actually consists of three mountain ranges, the Ma Ha Tauk, Gila and Guadalupe; and is one of the largest municipally operated parks in the country. It boasts 51 miles of primary trails for horseback riding, hiking and mountain biking for all ability levels. From the park's main entrance, you can drive up the Summit Road 5.5 miles to Dobbins Lookout and spectacular valleywide views or you can continue to the Gila Lookout for a view of the Gila River Valley. ",
+      [
+        "http://www.birderfrommaricopa.com/user/cimage/a-aasouthmtnpark-bendire-ogh-281529.JPG",
+        "https://www.phoenix.gov/parkssite/MediaAssets/070363.png",
+        "https://s3.amazonaws.com/citybuzz/2015/11/south-mountain-real-estate-phoenix-neighborhood/south-mountain-real+estate-2.jpg"
+      ]
+    ],
+    [
+      "Phoenix Botanical Garden",
+      33.463014,
+      -111.943671,
+      "For more than 70 years, the Desert Botanical Garden has been teaching and inspiring visitors from the local community and around the world, providing research, exhibits and more designed to help us understand, protect and preserve the desert’s natural beauty.",
+      [
+        "http://www.8thingstodo.com/wp-content/uploads/2012/12/desert-botanical-garden.jpg",
+        "http://img1.sunset.timeinc.net/sites/default/files/image/2012/10/west-public-gardens-desert-botanical-garden-phoenix-1012-x.jpg",
+        "http://restylesource.com/wp-content/uploads/2015/11/garden3.jpg"
 
-    function initialize() {
-      var myOptions = {
-        center: new google.maps.LatLng(33.44184171, 151.274856),
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      var map = new google.maps.Map(document.getElementById("default"), myOptions);
+      ]
+    ],
+    [
+      "Phoenix Mountain Preserve",
+      33.553141,
+       -112.016897,
+      "The parks and peaks that make up the Phoenix Mountains Preserve are surrounded by civilization, but feel as remote as the Sonoran Desert outside the city. Located in the heart of Central Phoenix and just 20 minutes from downtown, the preserve offers hiking, biking, and views from prominent summits such as Piestewa Peak and Camelback Mountain. icuri, duo facilis epicuri moderatius ut. Errem antiopam an nam, eu qui iudico legendos prodesset",
+      [
+        "https://c1.staticflickr.com/5/4125/4842841654_1826b5a344_b.jpg",
+        "https://images1.phoenixnewtimes.com/imager/u/original/6562178/instatrail.jpg",
+        "https://www.phoenix.gov/parkssite/MediaAssets/091077.jpg",
+      ]
+    ],
+    [
+      "North Mountain Park",
+      33.582136,
+      -112.066411,
+      "Around the turn of the century, the North Mountain area served as a campground for Phoenix Indian School’s pupils and their families. There are a number of closed mining shafts and pits, evidence of the history of copper mining in Arizona.",
+      [
+        "http://azfoo.net/places/az/phoenix/northmountain/misc/01_NorthMountainSign.jpg",
+        "https://www.phoenix.gov/parkssite/MediaAssets/d_031652.jpg",
+        "https://s3-media4.fl.yelpcdn.com/bphoto/jnSj98VOKLbIUaeGbXz6Mg/348s.jpg"
+      ]
+    ]
+  ];
 
-      setMarkers(map, locations[1]);
+  var locations = [cityscape, landscape];
+
+  function initialize() {
+    var myOptions = {
+      center: new google.maps.LatLng(33.44184171, 151.274856),
+      zoom: 10,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("default"), myOptions);
+
+    setMarkers(map, locations[1]);
+  }
+
+  function setMarkers(map, locations) {
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+      var title = locations[i][0];
+      var lat = locations[i][1];
+      var long = locations[i][2];
+      var desc = locations[i][3];
+
+      var latlngset = new google.maps.LatLng(lat, long);
+
+      var marker = new google.maps.Marker({
+        map: map,
+        title: title,
+        position: latlngset,
+        clicked: false
+      });
+      map.setCenter(marker.getPosition());
+
+      /////////////////////////////////////////
+      var content = "<style>.title {font-weight:bold;font-size:20px;}</style>";
+      for (var j = 0; j < locations[i][4].length; j++)
+        content += '<img style = "height: 150px; margin-right:2px;" src="' + locations[i][4][j] + '">';
+      content +=
+        '<br><div class = "title">' +
+        title +
+        "</div>" +
+        desc +
+        "<br><a href=#>How to shoot this location</a>";
+      /////////////////////////////////////////
+
+      var infowindow = new google.maps.InfoWindow();
+
+      google.maps.event.addListener(
+        marker,
+        "click",
+        (function(marker, content, infowindow) {
+          return function() {
+            setTimeout(function() {
+              infowindow.setContent(content);
+            }, 200);
+            infowindow.open(map, marker);
+
+            google.maps.event.addListener(
+              map,
+              "click",
+              (function(marker) {
+                return function() {
+                  infowindow.close();
+                };
+              })(marker)
+            );
+          };
+        })(marker, content, infowindow)
+      );
     }
-
-    function setMarkers(map, locations) {
-      var marker, i;
-
-      for (i = 0; i < locations.length; i++) {
-        var title = locations[i][0];
-        var lat = locations[i][1];
-        var long = locations[i][2];
-        var desc = locations[i][3];
-
-        var latlngset = new google.maps.LatLng(lat, long);
-
-        var marker = new google.maps.Marker({
-          map: map,
-          title: title,
-          position: latlngset,
-          clicked: false
-        });
-        map.setCenter(marker.getPosition());
-
-        /////////////////////////////////////////
-        var content = "<style>.title {font-weight:bold;font-size:20px;}</style>";
-        for (var j = 0; j < locations[i][4].length; j++)
-          content += '<img style = "height: 150px; margin-right:2px;" src="' + locations[i][4][j] + '">';
-        content +=
-          '<br><div class = "title">' +
-          title +
-          "</div>" +
-          desc +
-          "<br><a href=#>How to shoot this location</a>";
-        /////////////////////////////////////////
-
-        var infowindow = new google.maps.InfoWindow();
-
-        google.maps.event.addListener(
-          marker,
-          "click",
-          (function(marker, content, infowindow) {
-            return function() {
-              setTimeout(function() {
-                infowindow.setContent(content);
-              }, 200);
-              infowindow.open(map, marker);
-
-              google.maps.event.addListener(
-                map,
-                "click",
-                (function(marker) {
-                  return function() {
-                    infowindow.close();
-                  };
-                })(marker)
-              );
-            };
-          })(marker, content, infowindow)
-        );
-      }
-    }
-  </script>
-</head>
-
-<body onload="initialize()">
-  <div id="default" style="width:100%; height:100%"></div>
-</body>
-
-</html>
-
-} }
-
-
+  }
 </script>
-</head>
 
-<body onload="initialize()">
-  <style>
-    .search {
-      height:150px;
-      width:150px;
-      border-radius:50%;
-      background-color:rgba(72, 112, 222, .8);
-      background-image: url('https://d30y9cdsu7xlg0.cloudfront.net/png/5027-200.png');             background-size:80%;
-      background-repeat: no-repeat;
-      background-position: center;
-      position:relative;
-      bottom:200px;
-      left:100px;
-    }
+<div id="default" style="width:100%; height:100%"></div>
 
-    .search:hover {
-      background-color:rgba(72, 112, 222, 1);
-    }
-  </style>
+<!-- <body onload="initialize()">
   <div id="default" style="width:100%; height:100%"><div class = "search"</div></div>
-</body>
+</body> -->
