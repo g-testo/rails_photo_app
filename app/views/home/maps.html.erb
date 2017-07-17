@@ -37,7 +37,7 @@ $(function() {
   initialize()
 });
 
-  var cityscape = [
+  var database = [
     [
       "Galvanize",
       33.4404542,
@@ -46,9 +46,10 @@ $(function() {
       [
         "http://blog.cushwake.com/wp-content/uploads/2017/05/galvanize.jpg",
         "https://cdn.geekwire.com/wp-content/uploads/2016/08/Galvanize-630x420.jpg",
-
-      ]
+      ],
+      "cityscape"
     ],
+
     [
       "Westward Ho",
       33.45492,
@@ -57,8 +58,10 @@ $(function() {
       [
         "https://www.gannett-cdn.com/-mm-/4984e39cb281bfd2d1d08a93a623f588906af0cd/c=0-221-2987-1909&r=x633&c=1200x630/local/-/media/2017/04/19/Phoenix/Phoenix/636282272562454732-Westward-Ho-6.jpg",
         "https://s-media-cache-ak0.pinimg.com/originals/fc/b8/76/fcb8767187c7b2c94cc21ddf5e06a0ba.jpg",
-         ]
+       ],
+       "cityscape"
     ],
+
     [
       "Wrigly Mansion",
       33.5228326,
@@ -69,8 +72,10 @@ $(function() {
         "https://cdn2.iconfinder.com/data/icons/circle-icons-1/64/car-128.png",
         "https://image.flaticon.com/icons/png/128/119/119591.png",
         "https://image.flaticon.com/icons/png/128/119/119596.png"
-      ]
+      ],
+      "cityscape"
     ],
+
     [
       "Phoenix Police Museum",
       33.447409,
@@ -80,8 +85,10 @@ $(function() {
         "https://media-cdn.tripadvisor.com/media/photo-s/09/2f/39/22/phoenix-police-museum.jpg",
         "https://media-cdn.tripadvisor.com/media/photo-s/03/90/66/7b/phoenix-police-museum.jpg",
         "https://res.cloudinary.com/simpleview/image/fetch/c_fill,f_auto,q_75,w_640/https://res.cloudinary.com/simpleview/image/upload/crm/phoenix/5515_CITYHALL_b9be223b-5056-b3a8-49ebbe9d2834779d.jpg"
-      ]
+      ],
+      "cityscape"
     ],
+
     [
       "Steinegger Lodging House",
       33.450249,
@@ -91,11 +98,10 @@ $(function() {
         "https://d3jf2jipiivcgq.cloudfront.net/b95a9c913d812e080de66d602a1372f8a94c18d0.jpg",
         "http://2.bp.blogspot.com/-Fm_8WKhZMEg/VT1qQpNtXrI/AAAAAAAAXnk/VvjAb8PfvL0/s1600/Golden_West_Steinegger_Lodge_Alamo_1980s.jpg",
         "http://kjzz.org/sites/default/files/styles/news_story_210/public/field/image/Back.JPG?itok=I0MFtZ3Z"
-      ]
-    ]
-  ];
+      ],
+      "cityscape"
+    ],
 
-  var landscape = [
     [
       "Camelback Mountain",
       33.515452,
@@ -105,8 +111,10 @@ $(function() {
         "http://www.phoenixasap.com/gfx/hiking-camelback-mountain.jpg",
         "https://www.omnihotels.com/-/media/images/hotels/phxrst/activities/phxrst-omni-scottsdale-camelback.jpg?h=660&la=en&w=1170",
         "https://s3-media3.fl.yelpcdn.com/bphoto/PO9-Prb80ynURA9K287aUQ/348s.jpg"
-      ]
+      ],
+      "landscape"
     ],
+
     [
       "South Mountain Park",
       33.347389,
@@ -116,8 +124,10 @@ $(function() {
         "http://www.birderfrommaricopa.com/user/cimage/a-aasouthmtnpark-bendire-ogh-281529.JPG",
         "https://www.phoenix.gov/parkssite/MediaAssets/070363.png",
         "https://s3.amazonaws.com/citybuzz/2015/11/south-mountain-real-estate-phoenix-neighborhood/south-mountain-real+estate-2.jpg"
-      ]
+      ],
+      "landscape"
     ],
+
     [
       "Phoenix Botanical Garden",
       33.463014,
@@ -127,9 +137,10 @@ $(function() {
         "http://www.8thingstodo.com/wp-content/uploads/2012/12/desert-botanical-garden.jpg",
         "http://img1.sunset.timeinc.net/sites/default/files/image/2012/10/west-public-gardens-desert-botanical-garden-phoenix-1012-x.jpg",
         "http://restylesource.com/wp-content/uploads/2015/11/garden3.jpg"
-
-      ]
+      ],
+      "landscape"
     ],
+
     [
       "Phoenix Mountain Preserve",
       33.553141,
@@ -139,8 +150,10 @@ $(function() {
         "https://c1.staticflickr.com/5/4125/4842841654_1826b5a344_b.jpg",
         "https://images1.phoenixnewtimes.com/imager/u/original/6562178/instatrail.jpg",
         "https://www.phoenix.gov/parkssite/MediaAssets/091077.jpg",
-      ]
+      ],
+      "landscape"
     ],
+
     [
       "North Mountain Park",
       33.582136,
@@ -150,11 +163,54 @@ $(function() {
         "http://azfoo.net/places/az/phoenix/northmountain/misc/01_NorthMountainSign.jpg",
         "https://www.phoenix.gov/parkssite/MediaAssets/d_031652.jpg",
         "https://s3-media4.fl.yelpcdn.com/bphoto/jnSj98VOKLbIUaeGbXz6Mg/348s.jpg"
-      ]
+      ],
+      "landscape"
+    ],
+
+    [
+      "Macro Test",
+      31.582136,
+      -111.066411,
+      "Around the turn of the century, the North Mountain area served as a campground for Phoenix Indian School’s pupils and their families. There are a number of closed mining shafts and pits, evidence of the history of copper mining in Arizona.",
+      [
+        "http://azfoo.net/places/az/phoenix/northmountain/misc/01_NorthMountainSign.jpg",
+        "https://www.phoenix.gov/parkssite/MediaAssets/d_031652.jpg",
+        "https://s3-media4.fl.yelpcdn.com/bphoto/jnSj98VOKLbIUaeGbXz6Mg/348s.jpg"
+      ],
+      "macro"
+    ],
+
+    [
+      "Portrait Test",
+      32.582136,
+      -113.066411,
+      "Around the turn of the century, the North Mountain area served as a campground for Phoenix Indian School’s pupils and their families. There are a number of closed mining shafts and pits, evidence of the history of copper mining in Arizona.",
+      [
+        "http://azfoo.net/places/az/phoenix/northmountain/misc/01_NorthMountainSign.jpg",
+        "https://www.phoenix.gov/parkssite/MediaAssets/d_031652.jpg",
+        "https://s3-media4.fl.yelpcdn.com/bphoto/jnSj98VOKLbIUaeGbXz6Mg/348s.jpg"
+      ],
+      "portrait"
     ]
   ];
+  
+var landscape = [];
+var cityscape = [];
+var portrait = [];
+var macro = [];
 
-  var locations = [cityscape, landscape];
+for (var i = 0; i < database.length; i ++){
+  if (database[i][5] == "cityscape"){
+    cityscape.push(database[i])
+  } else if (database[i][5] == "landscape"){
+    landscape.push(database[i])
+  } else if (database[i][5] == "portrait"){
+    portrait.push(database[i])
+  } else if (database[i][5] == "macro"){
+    macro.push(database[i])
+  }
+}
+  var locations = [cityscape, landscape, portrait, macro];
 
   function initialize() {
     var myOptions = {
@@ -163,8 +219,12 @@ $(function() {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("default"), myOptions);
+    console.log("<%= @cat %>")
+    var locArrPos = locations.indexOf(<%= @cat %>);
 
-    setMarkers(map, locations[1]);
+    setMarkers(map, locations[locArrPos]);
+
+
   }
 
   function setMarkers(map, locations) {
