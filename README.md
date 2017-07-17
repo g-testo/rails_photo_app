@@ -3,3 +3,5 @@
 This is voice controlled photography web app that utilizes the rails framework as well as Google Maps API, Web Audio API and ResponsiveVoice.JS.
 
 Due to limitations with Web Audio API only work using Google Chrome.
+
+We also discovered it sometimes doesn't work using a headset.
