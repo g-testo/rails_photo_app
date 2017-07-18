@@ -45,48 +45,31 @@
         if (cat == "") {
           if (e.results[0][0].confidence > 0.75) {
 
-            var categoryList = ["portrait", "macro", "landscape", "cityscape"];
-            var voiceResults = e.results[0][0].transcript;
-
-            for(var i = 0; i < categoryList.length; i++){
-              if (voiceResults.includes(categoryList[i])) {
-                cat = categoryList[i];
-              }
+            if (e.results[0][0].transcript.includes("portrait")) {
+              console.log("your text included portrait");
+              cat = "portrait";
+            }
+            if (e.results[0][0].transcript.includes("macro")) {
+              console.log("your text included macro");
+              cat = "macro";
+            }
+            if (e.results[0][0].transcript.includes("landscape")) {
+              console.log("your text included landscape");
+              cat = "landscape";
+              locale = "outdoors";
+            }
+            if (e.results[0][0].transcript.includes("cityscape")) {
+              console.log("your text included cityscape");
+              cat = "cityscape";
+              locale = "outdoors";
             }
             //"Outdoors" requires uppercase "O" to be read correctly
-            if(voiceResults.includes("Outdoors")){
-             locale = "outdoors";
+            if (e.results[0][0].transcript.includes("Outdoors")) {
+              locale = "outdoors";
             }
-
-            if(voiceResults.includes("motion")){
-              var motion = "motion";
+            if (e.results[0][0].transcript.includes("motion")) {
+              motion = "motion";
             }
-
-            // if (e.results[0][0].transcript.includes("portrait")) {
-            //   console.log("your text included portrait");
-            //   cat = "portrait";
-            // }
-            // if (e.results[0][0].transcript.includes("macro")) {
-            //   console.log("your text included macro");
-            //   cat = "macro";
-            // }
-            // if (e.results[0][0].transcript.includes("landscape")) {
-            //   console.log("your text included landscape");
-            //   cat = "landscape";
-            //   locale = "outdoors";
-            // }
-            // if (e.results[0][0].transcript.includes("cityscape")) {
-            //   console.log("your text included cityscape");
-            //   cat = "cityscape";
-            //   locale = "outdoors";
-            // }
-            // //"Outdoors" requires uppercase "O" to be read correctly
-            // if (e.results[0][0].transcript.includes("Outdoors")) {
-            //   locale = "outdoors";
-            // }
-            // if (e.results[0][0].transcript.includes("motion")) {
-            //   motion = "motion";
-            // }
 
           } else {
             responsiveVoice.speak("I did not catch that, please try again.");
